@@ -23,7 +23,7 @@ There are a number of text files walking through the process of creating the gam
 * [04 - prototype application flow using minimal placeholder screens (intro/game over/game complete)](https://theinvader360.github.io/super-frog-ninja/Development-StepByStep/04.txt)
 * [05 - visual improvements (tileset, background, and collectible/goal/player sprites)](https://theinvader360.github.io/super-frog-ninja/Development-StepByStep/05.txt)
 * [06 - sound effects, scoring, debug messages, and gui](https://theinvader360.github.io/super-frog-ninja/Development-StepByStep/06.txt)
-* [07 - game timer and finished auxiliary screens (intro/game over/game complete](https://theinvader360.github.io/super-frog-ninja/Development-StepByStep/07.txt)
+* [07 - game timer and finished auxiliary screens (intro/game over/game complete)](https://theinvader360.github.io/super-frog-ninja/Development-StepByStep/07.txt)
 * [08 - goal/death sequences, hide cursor, disable developer shortcuts, disable debug output, run fullscreen](https://theinvader360.github.io/super-frog-ninja/Development-StepByStep/08.txt)
 
 There are also numbered subfolders in the ```Development-StepByStep``` folder, each containing a snapshot of the project having completed the relevant text file's instructions

@@ -1,0 +1,141 @@
+-----
+
+[goal sequence]
+
+double-click objPlayer in the asset browser objects folder
+double-click the existing objGoal collision event
+remove the line of code that immediately transitions to rmGameComplete
+add two lines of code to replace the current objPlayer instance with an objPlayerGoal instance
+
+<objPlayer:Collision-objGoal>
+audio_play_sound(sfxGoal, 1, false);
+show_debug_message("Timer: " + string_replace_all(string_format(global.levelTimerTicks/60, 8, 1), " ", ""));
+instance_create_layer(x, y, layer, objPlayerGoal); // create an instance of objPlayerGoal at the player's position
+instance_destroy(); // destroy the original player instance
+</objPlayer:Collision-objGoal>
+
+right-click objPlayer in the asset browser objects folder, duplicate, name: objPlayerGoal
+double-click objPlayerGoal in the asset browser objects folder, delete all events
+
+click the add event button, select create
+
+<objPlayerGoal:Create>
+alarm[0] = 90; // set alarm 0 - this will transition to the game complete screen after a short delay
+</objPlayerGoal:Create>
+
+click the add event button, select alarm > alarm 0
+
+<objPlayerGoal:Alarm0>
+room_goto(rmGameComplete);
+</objPlayerGoal:Alarm0>
+
+press f5 to test and discover a bug (collide with goal - null reference error), click the abort button when finished reviewing the error trace
+
+double-click objRmLevelController in the asset browser objects folder
+double-click the existing Step event
+wrap all the existing code in an if statement to guard against a null objPlayer reference
+
+<objRmLevelController:Step>
+if (instance_exists(objPlayer)) {
+
+// ...code omitted from example listing
+
+}
+</objRmLevelController:Step>
+
+press f5 to test goal sequence (null reference bug fixed, timer stops, player can't be controlled, transition to game complete after delay), press escape when done testing
+
+[death sequence]
+
+double-click objPlayer in the asset browser objects folder
+double-click the existing Step event
+remove the line of code that immediately transitions to rmGameOver in the objFatal collision block
+add two lines of code to replace the current objPlayer instance with an objPlayerDead instance
+
+<objPlayer:Step>
+// ...code omitted from example listing
+
+if (place_meeting(x, y, objFatal)) {
+  audio_play_sound(sfxDead, 1, false);
+  instance_create_layer(x, y, layer, objPlayerDead); // create an instance of objPlayerDead at the player's position
+  instance_destroy(); // destroy the original player instance
+}
+</objPlayer:Step>
+
+right-click objPlayerGoal in the asset browser objects folder, duplicate, name: objPlayerDead
+double-click objPlayerDead in the asset browser objects folder
+double-click the existing Alarm 0 event
+
+<objPlayerDead:Alarm0>
+room_goto(rmGameOver);
+</objPlayerDead:Alarm0>
+
+double-click the existing Create event
+
+<objPlayerDead:Create>
+alarm[0] = 120; // set alarm 0 - this will transition to the game over screen after a short delay
+ySpd = -15;
+image_yscale = -1;
+</objPlayerDead:Create>
+
+click the add event button, select step > step
+
+<objPlayerDead:Step>
+ySpd += 0.5; // pulled down by gravity
+y += ySpd;
+</objPlayerDead:Step>
+
+press f5 to test death sequence (timer stops, player can't be controlled, vertically flipped player shoots up the screen then falls away, transition to game over after delay), press escape when done testing
+
+[hide cursor]
+
+double-click game options > windows in the asset browser quick access folder
+uncheck display cursor under graphics, click the apply button, then ok
+
+press f5 to test hidden cursor (move mouse pointer over game area), press escape when done testing
+
+[remove developer shortcuts]
+
+double-click objRmLevelController in the asset browser objects folder
+delete the Key Press - C and Key Press - O events
+
+press f5 to test (confirm c and o keys have no effect), press escape when done testing
+
+[disable debug output]
+
+double-click objPlayer in the asset browser objects folder
+double-click the existing objCollectible collision event
+comment out the debug message line
+
+<objPlayer:Collision-objCollectible>
+// ...code omitted from example listing
+
+//show_debug_message("Collected: " + string(global.collectedCollectibles));
+</objPlayer:Collision-objCollectible>
+
+double-click the existing objGoal collision event
+comment out the debug message line
+
+<objPlayer:Collision-objGoal>
+// ...code omitted from example listing
+
+//show_debug_message("Timer: " + string_replace_all(string_format(global.levelTimerTicks/60, 8, 1), " ", ""));
+</objPlayer:Collision-objGoal>
+
+press f5 to test (confirm no collectible/timer related debug messages in the output tab), press escape when done testing
+
+[fullscreen]
+
+double-click objGlobals in the asset browser objects folder
+double-click the existing Create event
+uncomment the fullscreen line
+
+<objGlobals:Create>
+// ...code omitted from example listing
+
+window_set_fullscreen(true);
+</objGlobals:Create>
+
+press f5 to test (confirm fullscreen), press escape when done testing
+
+-----

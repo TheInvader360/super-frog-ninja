@@ -1,0 +1,87 @@
+-----
+
+[camera controller - follow player]
+
+right-click the asset browser objects folder, create > object, name: objRmLevelController
+click the add event button, select create
+
+<objRmLevelController:Create>
+wCam = 640;
+hCam = 360;
+</objRmLevelController:Create>
+
+click the add event button, select step > step
+
+<objRmLevelController:Step>
+camera_set_view_pos(view_camera[0], objPlayer.x - wCam / 2, objPlayer.y - hCam / 2);
+</objRmLevelController:Step>
+
+right-click Room1 in the asset browser rooms folder, rename rmLevel1
+double-click rmLevel1 in the asset browser rooms folder
+select the Instances layer, drag and drop objRmLevelController from the asset browser objects folder just above the visible room area
+press f5 to test the camera as it stands (centred on player), close the window when done testing
+
+[camera controller - limit to room bounds]
+
+double-click objRmLevelController in the asset browser objects folder
+edit the objRmLevelController:step code to clamp the camera view to the room bounds
+
+<objRmLevelController:Step>
+camera_set_view_pos(view_camera[0], clamp(objPlayer.x - wCam / 2, 0, room_width - wCam), clamp(objPlayer.y - hCam / 2, 0, room_height - hCam));
+</objRmLevelController:Step>
+
+press f5 to test the improved camera (centred on player and respecting room bounds), close the window when done testing
+
+[camera controller - smoother movement]
+
+double-click objRmLevelController in the asset browser objects folder
+edit the objRmLevelController:step code to have the camera more smoothly follow the player (linear interpolation between current and target position reduces jitter)
+
+<objRmLevelController:Step>
+var curX = camera_get_view_x(view_camera[0]);
+var curY = camera_get_view_y(view_camera[0]);
+// aim to focus on player while respecting room bounds, lerping to smooth out jitter
+var newX = lerp(curX, clamp(objPlayer.x - wCam / 2, 0, room_width - wCam), 0.1);
+var newY = lerp(curY, clamp(objPlayer.y - hCam / 2, 0, room_height - hCam), 0.1);
+camera_set_view_pos(view_camera[0], newX, newY);
+</objRmLevelController:Step>
+
+press f5 to test the further improved camera (smoothly follows player and respects room bounds), close the window when done testing
+
+[quick restart/quit]
+
+double-click objRmLevelController in the asset browser objects folder
+click the add event button, select key pressed > others > escape
+
+<objRmLevelController:KeyPress-Escape>
+game_end();
+</objRmLevelController:KeyPress-Escape>
+
+click the add event button, select key pressed > enter
+
+<objRmLevelController:KeyPress-Enter>
+game_restart();
+</objRmLevelController:KeyPress-Enter>
+
+press f5 to test the shortcuts (move around, press enter to restart, repeat a few times, then press escape to exit)
+
+[camera controller - focus on start]
+
+double-click rmLevel1 in the asset browser rooms folder
+move the objPlayer instance from an empty space towards the top left corner of the room to an empty space towards the bottom left corner of the room
+
+press f5 to see a problem with the camera (smoothly moves from the top left corner of the room to the player's start position - press enter to restart), press escape when done testing
+
+double-click objRmLevelController in the asset browser objects folder
+click the add event button, select other > room start
+
+<objRmLevelController:RoomStart>
+// focus on player while respecting room bounds (immediately jump to position)
+var camStartX = clamp(objPlayer.x - wCam / 2, 0, room_width - wCam);
+var camStartY = clamp(objPlayer.y - hCam / 2, 0, room_height - hCam);
+camera_set_view_pos(view_camera[0], camStartX, camStartY);
+</objRmLevelController:RoomStart>
+
+press f5 to see the fixed camera (immediately focused on player while respecting room bounds on start - press enter to restart), press escape when done testing
+
+-----

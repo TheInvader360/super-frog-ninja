@@ -1,0 +1,110 @@
+-----
+
+[intro screen stub]
+
+right-click the asset browser rooms folder, create > room, name: rmIntro
+click the re-order rooms icon (two stacked boxes alongside an up/down arrow)
+drag and drop the rooms so that rmIntro is listed first (this is the default room that loads when starting the game), then close the room manager dialog
+
+double-click rmIntro in the asset browser rooms folder
+in the Inspector tab, under room settings, set width to 640 and height to 360
+under viewports and cameras, tick the enable viewports checkbox
+under viewport 0, tick the visible checkbox, then set width of 640 and height of 360 in both the camera properties and viewport properties sections
+
+select the Background layer, scroll down to the properties section, click on the colour panel, select cyan (rgb:0,255,255), ok
+
+select the Instances layer, in grid options (main workspace area toolbar option) set Grid X and Grid Y both to 16
+
+right-click the asset browser objects folder, create > object, name: objRmIntroController
+click the add event button, select key pressed > others > escape
+
+<objRmIntroController:KeyPress-Escape>
+game_end();
+</objRmIntroController:KeyPress-Escape>
+
+click the add event button, select key pressed > space
+
+<objRmIntroController:KeyPress-Space>
+room_goto(rmLevel1);
+</objRmIntroController:KeyPress-Space>
+
+double-click rmIntro in the asset browser rooms folder
+select the Instances layer, drag and drop objRmIntroController from the asset browser objects folder just above the visible room area
+
+press f5 to test the into screen (escape to exit / space to play), press escape when done testing
+
+[game over screen stub]
+
+right-click rmIntro in the asset browser rooms folder, duplicate, name: rmGameOver
+double-click rmGameOver in the asset browser rooms folder
+select the Background layer, scroll down to the properties section, click on the colour panel, select red (rgb:255,0,0), ok
+select the Instances layer, delete the objRoomIntroController instance
+
+right-click objRmIntroController in the asset browser objects folder, duplicate, name: objRmGameOverController
+double-click objRmGameOverController in the asset browser objects folder
+double-click the existing Key Press - Space event
+edit the objRmGameOverController:KeyPress-Space code to transition back to the intro screen
+
+<objRmIntroController:KeyPress-Space>
+room_goto(rmIntro);
+</objRmIntroController:KeyPress-Space>
+
+double-click rmGameOver in the asset browser rooms folder
+select the Instances layer, drag and drop objRmGameOverController from the asset browser objects folder just above the visible room area
+
+double-click objPlayer in the asset browser objects folder
+double-click the existing Step event
+make a small change to the objFatal collision code - transition to the game over screen instead of restarting
+
+<objPlayer:Step>
+// ...code omitted from example listing
+
+if (place_meeting(x, y, objFatal)) {
+  room_goto(rmGameOver);
+}
+</objPlayer:Step>
+
+press f5 to test the game over screen (space to play, fall in trap, space to return to intro or escape to exit), press escape when done testing
+
+[game complete screen stub]
+
+right-click rmGameOver in the asset browser rooms folder, duplicate, name: rmGameComplete
+double-click rmGameComplete in the asset browser rooms folder
+select the Background layer, scroll down to the properties section, click on the colour panel, select green (rgb:0,255,0), ok
+select the Instances layer, delete the objRoomGameOverController instance
+
+right-click objRmGameOverController in the asset browser objects folder, duplicate, name: objRmGameCompleteController
+
+double-click rmGameComplete in the asset browser rooms folder
+select the Instances layer, drag and drop objRmGameCompleteController from the asset browser objects folder just above the visible room area
+
+double-click objPlayer in the asset browser objects folder
+double-click the existing objGoal collision event
+transition to the game complete screen instead of restarting
+
+<objPlayer:Collision-objGoal>
+room_goto(rmGameComplete);
+</objPlayer:Collision-objGoal>
+
+press f5 to test the game complete screen (space to play, collide with the goal, space to return to intro or escape to exit), press escape when done testing
+
+[quick win/lose]
+
+double-click objRmLevelController in the asset browser objects folder
+right-click the existing Key Press - Enter event, delete event, yes
+
+click the add event button, select key pressed > letters > c
+
+<objRmLevelController:KeyPress-C>
+room_goto(rmGameComplete);
+</objRmLevelController:KeyPress-C>
+
+click the add event button, select key pressed > letters > o
+
+<objRmLevelController:KeyPress-O>
+room_goto(rmGameOver);
+</objRmLevelController:KeyPress-O>
+
+press f5 to test the game complete/over developer shortcuts (space to play, c or o to quickly win/lose, space to return to intro or escape to exit), press escape when done testing
+
+-----

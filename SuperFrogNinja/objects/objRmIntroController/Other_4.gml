@@ -1,0 +1,1 @@
+flashingTextTickCounter = 0;

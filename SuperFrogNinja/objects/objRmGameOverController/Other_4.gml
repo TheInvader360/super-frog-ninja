@@ -1,0 +1,1 @@
+gameOverTickCounter = 0;

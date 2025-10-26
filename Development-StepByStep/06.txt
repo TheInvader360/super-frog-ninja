@@ -1,0 +1,102 @@
+-----
+
+[sound effects]
+
+drag and drop (using windows explorer) the provided sfxChomp.mp3, sfxDead.mp3, and sfxGoal.mp3 files (in the Assets folder) into the asset browser sounds folder
+
+double-click objPlayer in the asset browser objects folder
+double-click the existing objCollectible collision event
+add a line of code to play the relevant sound effect
+
+<objPlayer:Collision-objCollectible>
+instance_destroy(other);
+audio_play_sound(sfxChomp, 1, false);
+</objPlayer:Collision-objCollectible>
+
+press f5 to test the sound effect (collect some collectibles), press escape when done testing
+
+double-click objPlayer in the asset browser objects folder
+double-click the existing objGoal collision event
+add a line of code to play the relevant sound effect
+
+<objPlayer:Collision-objGoal>
+room_goto(rmGameComplete);
+audio_play_sound(sfxGoal, 1, false);
+</objPlayer:Collision-objGoal>
+
+press f5 to test the sound effect (touch the goal), press escape when done testing
+
+double-click objPlayer in the asset browser objects folder
+double-click the existing Step event
+add a line of code to play the relevant sound effect (within the objFatal collision check block)
+
+<objPlayer:Step>
+// ...code omitted from example listing
+
+if (place_meeting(x, y, objFatal)) {
+  audio_play_sound(sfxDead, 1, false);
+  room_goto(rmGameOver);
+}
+</objPlayer:Step>
+
+press f5 to test the sound effect (fall into a spike pit trap), press escape when done testing
+
+[collectibles score]
+
+right-click the asset browser objects folder, create > object, name: objGlobals
+click the add event button, select create
+
+<objGobals:Create>
+//window_set_fullscreen(true);
+global.totalCollectibles = 30;
+global.collectedCollectibles = 0;
+</objGobals:Create>
+
+double-click rmIntro in the asset browser rooms folder
+select the Instances layer, drag and drop objGlobals from the asset browser objects folder just above the visible room area
+
+double-click objPlayer in the asset browser objects folder
+double-click the existing objCollectible collision event
+add a line of code to increment the collected collectibles counter
+add a line of code to print some debug info to the developer console
+
+<objPlayer:Collision-objCollectible>
+instance_destroy(other);
+audio_play_sound(sfxChomp, 1, false);
+global.collectedCollectibles++;
+show_debug_message("Collected: " + string(global.collectedCollectibles));
+</objPlayer:Collision-objCollectible>
+
+press f5 to test (collect some collectibles and monitor the output tab for debug messages), press escape when done testing
+
+[gui]
+
+drag and drop (using windows explorer) the provided visitor1.ttf file (in the Assets folder) into the asset browser fonts folder (yes to the included files prompt)
+install the font locally (using windows explorer, double-click visitor1.ttf, install)
+exit then restart game maker studio
+
+right-click the asset browser fonts folder, create > font, name: fntVisitor1, select font: Visitor TT1 BRK, group: Default, tick the enable sdf checkbox, size: 18, anti-aliasing: Off, then click the regenerate button
+
+double-click objRmIntroController in the asset browser objects folder
+click the add event button, select create
+
+<objRmIntroController:Create>
+font_enable_effects(fntVisitor1, true, {
+  outlineEnable: true,
+  outlineDistance: 2,
+  outlineColour: c_black
+});
+</objRmIntroController:Create>
+
+double-click objRmLevelController in the asset browser objects folder
+click the add event button, select draw > draw gui
+
+<objRmLevelController:DrawGUI>
+draw_set_font(fntVisitor1);
+draw_set_colour(c_yellow);
+draw_text(4, 21, "Cherries " + string(global.collectedCollectibles) + "/" + string(global.totalCollectibles));
+</objRmLevelController:DrawGUI>
+
+press f5 to test (collect some collectibles and monitor the gui values), press escape when done testing
+
+-----

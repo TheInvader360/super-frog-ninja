@@ -71,9 +71,9 @@ press f5 to test (collect some collectibles and monitor the output tab for debug
 
 [gui]
 
-drag and drop (using windows explorer) the provided visitor1.ttf file (in the Assets folder) into the asset browser fonts folder (yes to the included files prompt)
+drag and drop (using windows explorer) the provided visitor1.ttf file (in the Assets folder) into the asset browser fonts folder (yes to the included files prompt, then close the included files dialog)
 install the font locally (using windows explorer, double-click visitor1.ttf, install)
-exit then restart game maker studio
+exit then restart game maker studio (save any unsaved changes if prompted)
 
 right-click the asset browser fonts folder, create > font, name: fntVisitor1, select font: Visitor TT1 BRK, group: Default, tick the enable sdf checkbox, size: 18, anti-aliasing: Off, then click the regenerate button
 

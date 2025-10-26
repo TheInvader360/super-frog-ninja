@@ -35,11 +35,11 @@ global.levelTimerTicks = 0;
 double-click the existing Step event
 add a line of code at the end to increment the timer each tick
 
-<objRmLevelController:RoomStart>
+<objRmLevelController:Step>
 // ...code omitted from example listing
 
 global.levelTimerTicks++;
-</objRmLevelController:RoomStart>
+</objRmLevelController:Step>
 
 double-click objPlayer in the asset browser objects folder
 double-click the existing objGoal collision event
@@ -185,6 +185,7 @@ create a new asset layer in the layers section of the inspector tab, set the nam
 re-order the layers if required (drag and drop - Text at the top, Instances in the middle, and Background at the bottom)
 
 drag and drop (using windows explorer) the provided sprWinner.png file (in the Assets folder) into the asset browser sprites folder
+double-click rmGameComplete in the asset browser rooms folder
 drag and drop sprWinner from the asset browser sprites folder into the room (place it anywhere in the room - make sure it's on the Text layer)
 tag: graphicWinner, position x: 320.0, position y: 40.0, scale x: 1, scale y: 1
 
@@ -235,6 +236,6 @@ draw_text(320, 95, "Cherries " + string(global.collectedCollectibles) + "/" + st
 draw_set_halign(fa_left); // restore default
 </objRmGameCompleteController:DrawGUI>
 
-press f5 to test the finished game over screen (confirm it looks good, score and timer shown, restart text flashes as intended, after a short delay pressing space transitions to the intro screen), press escape when done testing
+press f5 to test the finished game complete screen (confirm it looks good, score and timer shown, restart text flashes as intended, after a short delay pressing space transitions to the intro screen), press escape when done testing
 
 -----

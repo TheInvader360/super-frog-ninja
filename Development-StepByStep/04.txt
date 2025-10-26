@@ -31,7 +31,7 @@ room_goto(rmLevel1);
 double-click rmIntro in the asset browser rooms folder
 select the Instances layer, drag and drop objRmIntroController from the asset browser objects folder just above the visible room area
 
-press f5 to test the into screen (escape to exit / space to play), press escape when done testing
+press f5 to test the intro screen (escape to exit / space to play), press escape when done testing
 
 [game over screen stub]
 

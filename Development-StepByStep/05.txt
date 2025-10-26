@@ -8,7 +8,7 @@ double-click rmLevel1 in the asset browser rooms folder, create a new tile layer
 re-order the layers if required (drag and drop - Instances at the top, then Layout, then Tiles, and Background at the bottom)
 select the Tiles layer, click on the "No Tile Set" value in the Room Editor tab, select Tile Sets, then tsLevel
 draw tiles as appropriate to match the level layout
-once satisfied that the layer layout match, click the visibility toggle (eye icon) to hide the Layout layer
+once satisfied that the Tiles and Layout layers match, click the visibility toggle (eye icon) to hide the Layout layer
 
 press f5 to test the new tile layer, press escape when done testing
 
@@ -24,13 +24,13 @@ double-click objRmLevelController in the asset browser objects folder
 double-click the existing Step event
 add some code at the end to introduce a parallax scrolling effect (this gives an illusion of depth)
 
-<objPlayer:Step>
+<objRmLevelController:Step>
 // ...code omitted from example listing
 
 // apply a parallax effect to the background layer
 layer_x(layer_get_id("Background"), newX * 0.65);
 layer_y(layer_get_id("Background"), newY * 0.65);
-</objPlayer:Step>
+</objRmLevelController:Step>
 
 press f5 to test the parallax scrolling background, press escape when done testing
 
@@ -71,7 +71,7 @@ under collision mask, set mode to manual, and the left/right/top/bottom values t
 drag and drop (using windows explorer) the provided sprPlayerRun_strip12.png file (in the Assets folder) into the asset browser sprites folder
 under collision mask, set mode to manual, and the left/right/top/bottom values to 6/26/5/30, click the play button to view the animation and verify that the collision mask is appropriate
 
-double-click objPlaer in the asset browser objects folder
+double-click objPlayer in the asset browser objects folder
 click on the sprGreen value, select Sprites, then sprPlayerIdle
 
 press f5 to test the player sprite (note that it is animated, but always in the idle state and always facing right), press escape when done testing

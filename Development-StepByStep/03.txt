@@ -55,7 +55,7 @@ if (place_meeting(x, y, objFatal)) {
 }
 </objPlayer:Step>
 
-press f5 to test (fall into a fatal trap to automatically restart the level), press escape when done testing
+press f5 to test (fall into a fatal trap to automatically restart the game), press escape when done testing
 
 [collectibles]
 
@@ -88,6 +88,6 @@ click the add event button, select collision > objects > objGoal
 game_restart(); // temporary action...
 </objPlayer:Collision-objGoal>
 
-press f5 to test (room restarts when player collides with goal), press escape when done testing
+press f5 to test (game restarts when player collides with goal), press escape when done testing
 
 -----

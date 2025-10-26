@@ -87,7 +87,7 @@ edit the objPlayer:step code to only allow jumping when grounded and to respect 
 
 <objPlayer:Step>
 var xDir = keyboard_check(vk_right) - keyboard_check(vk_left); // -1 left, 0 none, +1 right
-var jump = keyboard_check(vk_up);
+var jump = keyboard_check_pressed(vk_space);
 var grounded = place_meeting(x, y + 1, objSolid);
 
 xSpd = xDir * spd;

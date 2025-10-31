@@ -60,7 +60,7 @@ camera_set_view_pos(view_camera[0], newX, newY);
 
 Press F5 to test the further improved camera (smoothly follows player and respects room bounds), close the window when done testing
 
-### Quick restart/quit]
+### Quick restart/quit
 
 Double-click objRmLevelController in the asset browser objects folder
 

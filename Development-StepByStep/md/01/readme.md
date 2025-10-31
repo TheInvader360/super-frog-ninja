@@ -48,7 +48,7 @@ In the viewports and cameras section of the inspector tab - enable viewports, th
 
 Press F5 to test the empty room, close the window when done testing
 
-### Mminimal layout objects
+### Minimal layout objects
 
 Right-click the asset browser objects folder, create > object, name: objSolid, click on the "No Sprite" value, select Sprites, then sprBlue
 

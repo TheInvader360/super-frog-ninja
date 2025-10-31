@@ -17,14 +17,14 @@ Either clone this repository or [download as zip](https://github.com/TheInvader3
 
 There are a number of files walking through the process of creating the game step by step under the ```Development-StepByStep``` folder (both plain text and markdown formatted) - you can follow along with these instructions to recreate the game from scratch if you like
 
-* [01 - Prototype the core game mechanic using minimal placeholder assets](https://theinvader360.github.io/super-frog-ninja/Development-StepByStep/md/01.md)
-* [02 - Camera controller and developer shortcuts](https://theinvader360.github.io/super-frog-ninja/Development-StepByStep/md/02.md)
-* [03 - More game elements (traps, collectibles, goal) and improved collisions](https://theinvader360.github.io/super-frog-ninja/Development-StepByStep/md/03.md)
-* [04 - Prototype application flow using minimal placeholder screens (intro, game over, game complete)](https://theinvader360.github.io/super-frog-ninja/Development-StepByStep/md/04.md)
-* [05 - Visual improvements (tileset, background, sprites)](https://theinvader360.github.io/super-frog-ninja/Development-StepByStep/md/05.md)
-* [06 - Sound effects, scoring, debug messages, and GUI](https://theinvader360.github.io/super-frog-ninja/Development-StepByStep/md/06.md)
-* [07 - Game timer and finished auxiliary screens (intro, game over, game complete)](https://theinvader360.github.io/super-frog-ninja/Development-StepByStep/md/07.md)
-* [08 - Goal and death sequences, hide cursor, disable developer shortcuts, disable debug output, run fullscreen](https://theinvader360.github.io/super-frog-ninja/Development-StepByStep/md/08.md)
+* [01 - Prototype the core game mechanic using minimal placeholder assets](https://theinvader360.github.io/super-frog-ninja/Development-StepByStep/md/01/)
+* [02 - Camera controller and developer shortcuts](https://theinvader360.github.io/super-frog-ninja/Development-StepByStep/md/02/)
+* [03 - More game elements (traps, collectibles, goal) and improved collisions](https://theinvader360.github.io/super-frog-ninja/Development-StepByStep/md/03/)
+* [04 - Prototype application flow using minimal placeholder screens (intro, game over, game complete)](https://theinvader360.github.io/super-frog-ninja/Development-StepByStep/md/04/)
+* [05 - Visual improvements (tileset, background, sprites)](https://theinvader360.github.io/super-frog-ninja/Development-StepByStep/md/05/)
+* [06 - Sound effects, scoring, debug messages, and GUI](https://theinvader360.github.io/super-frog-ninja/Development-StepByStep/md/06/)
+* [07 - Game timer and finished auxiliary screens (intro, game over, game complete)](https://theinvader360.github.io/super-frog-ninja/Development-StepByStep/md/07/)
+* [08 - Goal and death sequences, hide cursor, disable developer shortcuts, disable debug output, run fullscreen](https://theinvader360.github.io/super-frog-ninja/Development-StepByStep/md/08/)
 
 There are also numbered subfolders in the ```Development-StepByStep``` folder, each containing a snapshot of the project having completed the relevant text file's instructions
 
